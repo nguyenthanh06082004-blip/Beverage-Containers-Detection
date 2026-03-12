@@ -1,10 +1,3 @@
-import os
-import sys
-
-# --- MẸO HACK CỦA CHUYÊN GIA ĐỂ LÁCH LỖI STREAMLIT ---
-os.system(f"{sys.executable} -m pip uninstall -y opencv-python")
-os.system(f"{sys.executable} -m pip install opencv-python-headless==4.8.0.74")
-# ----------------------------------------------------
 
 import streamlit as st
 import cv2
@@ -44,3 +37,4 @@ if uploaded_file is not None:
 
             st.image(annotated_rgb, caption="Kết quả từ AI", use_container_width=True)
             st.success("✅ Hoàn tất!")
+
