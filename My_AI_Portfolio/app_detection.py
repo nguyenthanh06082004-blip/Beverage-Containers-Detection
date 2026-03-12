@@ -1,19 +1,25 @@
+import os
+import sys
+
+# --- MẸO HACK CỦA CHUYÊN GIA ĐỂ LÁCH LỖI STREAMLIT ---
+os.system(f"{sys.executable} -m pip uninstall -y opencv-python")
+os.system(f"{sys.executable} -m pip install opencv-python-headless==4.8.0.74")
+# ----------------------------------------------------
+
 import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
 from ultralytics import YOLO
-import os
 
 # Cấu hình tiêu đề Web
 st.set_page_config(page_title="Hệ thống Nhận diện AI", page_icon="🤖")
 st.title("🚀 Web App Nhận Diện Đồ Vật bằng AI")
 st.write("Dự án ứng dụng Computer Vision. Vui lòng tải ảnh lên để AI phân tích!")
 
-# Tải model (Đã dùng mẹo đường dẫn tuyệt đối để chống lỗi)
+# Tải model 
 @st.cache_resource
 def load_model():
-    # Lấy địa chỉ thư mục hiện tại ghép với tên file pt
     file_path = os.path.join(os.path.dirname(__file__), 'best-Beverage Containers-yolov8.pt')
     return YOLO(file_path)
 
